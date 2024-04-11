@@ -32,7 +32,7 @@ function oldScrabbleScorer(word) {
 // don't change the names or your program won't work as expected. //
 
 function initialPrompt() {
-    word = input.question("Let's play some scrabble!\n\nEnter a word: ");
+   let word = input.question("Let's play some scrabble!\n\nEnter a word: ");
    return word;
 };
 
@@ -90,14 +90,12 @@ function scorerPrompt(word) {
    let scoringMethodNumber = input.question("Which scoring method would you like to see?\n\n0 - Simple: One point per character\n1 - Vowel Bonus: Vowels are worth 3 points\n2 - Scrabble: Uses scrabble point system\nEnter 0, 1, or 2: ")
    scoringMethodNumber = Number(scoringMethodNumber);
    if (scoringMethodNumber === 0) {
-      return console.log(`Points for '${word}': ${simpleScorer(word)}`);
+      return simpleScore;
    } else if (scoringMethodNumber === 1) {
-      return console.log(`Points for '${word}': ${vowelBonusScorer(word)}`);
+      return vowelBonusScore;
    } else if (scoringMethodNumber === 2) {
-      return console.log (`Points for '${word}': ${scrabbleScorer(word)}`);
+      return oldScrabbleScore;
    }
-      
-   
 }
 
 function transform(oldPointStructure) {
@@ -115,8 +113,10 @@ let newPointStructure  = transform(oldPointStructure);
 
 function runProgram() {
    let userWord = initialPrompt();
-   scorerPrompt(userWord);
+   console.log(`Points for '${userWord}': ${scorerPrompt().scorerFunction(userWord)}`);
+  
 }
+   
 
 // Don't write any code below this line //
 // And don't change these or your program will not run as expected //
